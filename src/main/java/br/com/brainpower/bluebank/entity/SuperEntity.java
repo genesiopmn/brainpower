@@ -1,5 +1,7 @@
 package br.com.brainpower.bluebank.entity;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
@@ -9,20 +11,24 @@ import java.util.UUID;
 public class SuperEntity {
 
     @Id
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private boolean active;
 
     public SuperEntity() {
-        id = UUID.randomUUID();
         LocalDateTime now = LocalDateTime.now();
         createdAt = now;
         updatedAt = now;
         active = true;
     }
 
-    public UUID getId() {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Integer getId() {
         return id;
     }
 
@@ -37,4 +43,10 @@ public class SuperEntity {
     public boolean isActive() {
         return active;
     }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+    
+    
 }

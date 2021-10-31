@@ -1,5 +1,6 @@
 package br.com.brainpower.bluebank.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.tomcat.jni.Local;
 
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ public class Client extends SuperEntity{
     private String identificationDocument;
     private String email;
     private String telephone;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern="yyyy/MM/dddd")
     private LocalDate birthdate;
     private String fulladdress;
     private boolean acceptStorageLgpd;
@@ -54,5 +56,29 @@ public class Client extends SuperEntity{
 
     public boolean isAcceptStorageLgpd() {
         return acceptStorageLgpd;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setIdentificationDocument(String identificationDocument) {
+        this.identificationDocument = identificationDocument;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public void setFulladdress(String fulladdress) {
+        this.fulladdress = fulladdress;
     }
 }
