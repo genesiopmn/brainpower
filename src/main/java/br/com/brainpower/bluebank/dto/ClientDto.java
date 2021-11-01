@@ -1,11 +1,13 @@
 package br.com.brainpower.bluebank.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
 public class ClientDto {
     
-    private UUID id;
+    private Integer id;
     private String name;
     private String identificationDocument;
     private String email;
@@ -13,7 +15,7 @@ public class ClientDto {
     private LocalDate birthdate;
     private String fulladdress;
 
-    public ClientDto(UUID id, String name, String identificationDocument, String email, String telephone, LocalDate birthdate, String fulladdress) {
+    public ClientDto(Integer id, String name, String identificationDocument, String email, String telephone, LocalDate birthdate, String fulladdress) {
         this.id = id;
         this.name = name;
         this.identificationDocument = identificationDocument;
@@ -25,7 +27,7 @@ public class ClientDto {
     
     public ClientDto() {}
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -53,7 +55,7 @@ public class ClientDto {
         this.fulladdress = fulladdress;
     }
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
