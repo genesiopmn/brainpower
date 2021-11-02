@@ -1,10 +1,15 @@
 package br.com.brainpower.bluebank.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.tomcat.jni.Local;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Client extends SuperEntity{
@@ -17,6 +22,10 @@ public class Client extends SuperEntity{
     private LocalDate birthdate;
     private String fulladdress;
     private boolean acceptStorageLgpd;
+    
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Account> account = new ArrayList<>();
 
     public Client(String name, String identificationDocument, String email, String telephone, LocalDate birthdate, String fulladdress) {
         super();
@@ -80,5 +89,9 @@ public class Client extends SuperEntity{
 
     public void setFulladdress(String fulladdress) {
         this.fulladdress = fulladdress;
+    }
+
+    public List<Account> getAccount() {
+        return account;
     }
 }

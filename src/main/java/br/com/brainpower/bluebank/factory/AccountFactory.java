@@ -2,6 +2,7 @@ package br.com.brainpower.bluebank.factory;
 
 import br.com.brainpower.bluebank.dto.AccountDto;
 import br.com.brainpower.bluebank.entity.Account;
+import br.com.brainpower.bluebank.entity.Client;
 import br.com.brainpower.bluebank.form.AccountForm;
 import br.com.brainpower.bluebank.service.exceptions.ResourceNotFoundException;
 
@@ -15,6 +16,10 @@ public class AccountFactory {
         accountDto.setAgencyTelephone(account.getAgencyTelephone());
         accountDto.setAccountBalance(account.getAccountBalance());
         accountDto.setId(account.getId());
+        accountDto.setAccountStatus(account.getAccountStatus());
+        
+        
+        
 
         if(!checkStatus(account)){
             throw new ResourceNotFoundException("id not found");

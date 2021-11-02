@@ -14,20 +14,18 @@ public class AccountDto {
     private String agencyNumber;
     private String agencyTelephone;
     private double accountBalance;
-    @ManyToOne
-    private Client client;
-    @Enumerated(value = EnumType.STRING)
+    private ClientDto clientDto;
     private AccountStatusEnum accountStatus;
 
     public AccountDto(Integer id, String accountNumber, String agencyNumber, String agencyTelephone, double accountBalance,
-                      Client client, AccountStatusEnum accountStatus) {
+                      ClientDto clientDto, AccountStatusEnum accountStatus) {
         super();
         this.id = id;
         this.accountNumber = accountNumber;
         this.agencyNumber = agencyNumber;
         this.agencyTelephone = agencyTelephone;
         this.accountBalance = accountBalance;
-        this.client = client;
+        this.clientDto = clientDto;
         this.accountStatus = accountStatus;
     }
 
@@ -82,12 +80,12 @@ public class AccountDto {
         this.agencyTelephone = agencyTelephone;
     }
 
-    public Client getClient() {
-        return client;
+    public ClientDto getClient() {
+        return clientDto;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClient(ClientDto clientDto) {
+        this.clientDto = clientDto;
     }
 
     public AccountStatusEnum getAccountStatus() {
@@ -97,4 +95,6 @@ public class AccountDto {
     public void setAccountStatus(AccountStatusEnum accountStatus) {
         this.accountStatus = accountStatus;
     }
+    
+    
 }

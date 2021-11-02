@@ -28,11 +28,11 @@ public class AccountController {
         AccountDto accountDto = service.findById(id);
         return ResponseEntity.ok(accountDto);
     }
-
-    @GetMapping(value = "/{idClient}")
-    public ResponseEntity<List<AccountDto>> findAllByClient(@PathVariable Integer id){
-        return ResponseEntity.ok(service.findAllByIdClient(id));
-    }
+    //Comentei porque estava trazendo o outro
+    //@GetMapping(value = "/{idClient}")
+    //public ResponseEntity<List<AccountDto>> findAllByClient(@PathVariable Integer id){
+    //    return ResponseEntity.ok(service.findAllByIdClient(id));
+    //}
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteById(@PathVariable Integer id){

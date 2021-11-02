@@ -1,9 +1,10 @@
 package br.com.brainpower.bluebank.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDate;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClientDto {
     
@@ -14,6 +15,8 @@ public class ClientDto {
     private String telephone;
     private LocalDate birthdate;
     private String fulladdress;
+    @JsonIgnore
+    private List<AccountDto> listaccountDto = new ArrayList<>(); 
 
     public ClientDto(Integer id, String name, String identificationDocument, String email, String telephone, LocalDate birthdate, String fulladdress) {
         this.id = id;
@@ -81,5 +84,13 @@ public class ClientDto {
 
     public String getFulladdress() {
         return fulladdress;
+    }
+
+    public List<AccountDto> getListaccountDto() {
+        return listaccountDto;
+    }
+    
+    public void addListAccountDto(AccountDto accountDto){
+        this.listaccountDto.add(accountDto);
     }
 }
