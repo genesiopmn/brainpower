@@ -1,10 +1,11 @@
 package br.com.brainpower.bluebank.form;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.NotFound;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClientForm {
     
@@ -18,14 +19,13 @@ public class ClientForm {
     @NotFound
     private LocalDate birthdate;
     @NotFound
-    private String fulladdress;
+    private List<FullAddressForm> listFulladdress = new ArrayList<>();
 
-    public ClientForm(String name, String identificationDocument, String email, LocalDate birthdate, String fulladdress) {
+    public ClientForm(String name, String identificationDocument, String email, LocalDate birthdate) {
         this.name = name;
         this.identificationDocument = identificationDocument;
         this.email = email;
         this.birthdate = birthdate;
-        this.fulladdress = fulladdress;
     }
 
     public String getName() {
@@ -48,7 +48,11 @@ public class ClientForm {
         return birthdate;
     }
 
-    public String getFulladdress() {
-        return fulladdress;
+    public List<FullAddressForm> getListFulladdress() {
+        return listFulladdress;
     }
+    
+    public void addListFullAddressForm(FullAddressForm fullAddressForm){
+        this.listFulladdress.add(fullAddressForm);
+    } 
 }

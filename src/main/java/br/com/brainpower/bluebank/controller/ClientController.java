@@ -1,18 +1,18 @@
 package br.com.brainpower.bluebank.controller;
 
 import br.com.brainpower.bluebank.dto.ClientDto;
+import br.com.brainpower.bluebank.dto.FullAddressDto;
 import br.com.brainpower.bluebank.form.ClientForm;
-import br.com.brainpower.bluebank.form.UpdateClientFullAdressForm;
+import br.com.brainpower.bluebank.form.UpdateClientFullAddressForm;
 import br.com.brainpower.bluebank.service.ClientService;
+import br.com.brainpower.bluebank.service.FullAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("client")
@@ -20,6 +20,9 @@ public class ClientController {
     
     @Autowired
     private ClientService clientService;
+    
+    @Autowired
+    private FullAddressService fullAddressService; 
     
     @GetMapping
     public ResponseEntity<List<ClientDto>> findAll(){
@@ -46,8 +49,8 @@ public class ClientController {
     }
     
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ClientDto> update(@PathVariable Integer id, @RequestBody UpdateClientFullAdressForm updateClientFullAdressForm){
-        ClientDto clientDto = clientService.updateFullAdress(updateClientFullAdressForm,id);
-        return ResponseEntity.ok(clientDto);
+    public ResponseEntity<FullAddressDto> update(@PathVariable Integer id, @RequestBody UpdateClientFullAddressForm updateClientFullAdressForm){
+        FullAddressDto fullAddressDto = fullAddressService.updateFullAddress(updateClientFullAdressForm,id);
+        return ResponseEntity.ok(fullAddressDto);
     }
 }

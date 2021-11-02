@@ -2,9 +2,14 @@ package br.com.brainpower.bluebank.factory;
 
 import br.com.brainpower.bluebank.dto.ClientDto;
 import br.com.brainpower.bluebank.entity.Client;
+import br.com.brainpower.bluebank.entity.FullAddress;
 import br.com.brainpower.bluebank.form.ClientForm;
-import br.com.brainpower.bluebank.form.UpdateClientFullAdressForm;
+import br.com.brainpower.bluebank.form.FullAddressForm;
+import br.com.brainpower.bluebank.form.UpdateClientFullAddressForm;
 import br.com.brainpower.bluebank.service.exceptions.ResourceNotFoundException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClientFactory {
     
@@ -14,10 +19,12 @@ public class ClientFactory {
         clientDto.setName(client.getName());
         clientDto.setBirthdate(client.getBirthdate());
         clientDto.setEmail(client.getEmail());
-        clientDto.setFulladdress(client.getFulladdress());
         clientDto.setId(client.getId());
         clientDto.setIdentificationDocument(client.getIdentificationDocument());
         clientDto.setTelephone(client.getTelephone());
+        for(FullAddress fullAddress : client.getListFullAddress()){
+            clientDto.addFullAddressDto(FullAddressFactory.convertFullAddressDto(fullAddress));    
+        }
         
         if(!checkStatus(client)){
             throw new ResourceNotFoundException("id not found");
@@ -33,16 +40,17 @@ public class ClientFactory {
         Client client = new Client();
         client.setBirthdate(clientForm.getBirthdate());
         client.setEmail(clientForm.getEmail());
-        client.setFulladdress(clientForm.getFulladdress());
         client.setTelephone(clientForm.getTelephone());
         client.setIdentificationDocument(clientForm.getIdentificationDocument());
         client.setName(clientForm.getName());
+
+        List<FullAddress> listFullAddress = new ArrayList<>();
         
-        return client;
-    }
-    
-    public static Client updateFullAdress(Client client, UpdateClientFullAdressForm updateClientFullAdressForm){
-        client.setFulladdress(updateClientFullAdressForm.getFulladdress());
+        for(FullAddressForm fullAddressForm : clientForm.getListFulladdress()){
+            listFullAddress.add(FullAddressFactory.convertFullAddress(fullAddressForm));
+        }
+        
+        client.setListFullAddress(listFullAddress);
         
         return client;
     }

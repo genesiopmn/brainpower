@@ -4,7 +4,6 @@ import br.com.brainpower.bluebank.dto.ClientDto;
 import br.com.brainpower.bluebank.entity.Client;
 import br.com.brainpower.bluebank.factory.ClientFactory;
 import br.com.brainpower.bluebank.form.ClientForm;
-import br.com.brainpower.bluebank.form.UpdateClientFullAdressForm;
 import br.com.brainpower.bluebank.repository.ClientRepository;
 import br.com.brainpower.bluebank.service.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -22,6 +20,9 @@ public class ClientService {
     
     @Autowired
     private ClientRepository clientRepository;
+    
+    @Autowired
+    private FullAddressService fullAddressService;
     
     public List<ClientDto> findAll(){
         return clientRepository.findAll().stream().map(ClientFactory::convertClientDto).collect(Collectors.toList());
@@ -54,18 +55,7 @@ public class ClientService {
     public ClientDto save(ClientForm clientForm){
         Client client = ClientFactory.convertClient(clientForm);
         clientRepository.save(client);
+        fullAddressService.saveFullAddress(client.getListFullAddress());
         return ClientFactory.convertClientDto(client);
-    }
-    
-    public ClientDto updateFullAdress(UpdateClientFullAdressForm updateClientFullAdressForm, Integer id){
-        Optional<Client> clientOptional = clientRepository.findById(id);
-        if(clientOptional.isEmpty()){
-            throw new ResourceNotFoundException(id);
-        }
-        Client client = clientOptional.get();
-        Client clientUpdate = ClientFactory.updateFullAdress(client, updateClientFullAdressForm);
-        clientUpdate.setUpdatedAt(LocalDateTime.now());
-        clientRepository.save(clientUpdate);
-        return ClientFactory.convertClientDto(clientUpdate);
     }
 }
