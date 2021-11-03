@@ -1,6 +1,5 @@
 package br.com.brainpower.bluebank.form;
 
-import br.com.brainpower.bluebank.enums.AccountStatusEnum;
 import br.com.brainpower.bluebank.entity.Client;
 import org.hibernate.annotations.NotFound;
 
@@ -16,18 +15,15 @@ public class AccountForm {
     private double accountBalance;
     @NotFound
     private Client client;
-    @NotFound
-    private AccountStatusEnum accountStatus;
 
 
     public AccountForm(String accountNumber, String agencyNumber, String agencyTelephone, double accountBalance,
-                           Client client,AccountStatusEnum accountStatus) {
+                           Client client) {
         this.accountNumber = accountNumber;
         this.agencyNumber = agencyNumber;
         this.agencyTelephone = agencyTelephone;
         this.accountBalance = accountBalance;
         this.client = client;
-        this.accountStatus = accountStatus;
     }
 
     public String getAccountNumber() {
@@ -48,9 +44,5 @@ public class AccountForm {
 
     public Client getClient() {
         return client;
-    }
-
-    public AccountStatusEnum getAccountStatus() {
-        return accountStatus;
     }
 }

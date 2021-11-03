@@ -1,12 +1,5 @@
 package br.com.brainpower.bluebank.dto;
 
-import br.com.brainpower.bluebank.enums.AccountStatusEnum;
-import br.com.brainpower.bluebank.entity.Client;
-
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
-
 public class AccountDto {
 
     private Integer id;
@@ -15,10 +8,10 @@ public class AccountDto {
     private String agencyTelephone;
     private double accountBalance;
     private ClientDto clientDto;
-    private AccountStatusEnum accountStatus;
+    private boolean accountStatus = true;
 
     public AccountDto(Integer id, String accountNumber, String agencyNumber, String agencyTelephone, double accountBalance,
-                      ClientDto clientDto, AccountStatusEnum accountStatus) {
+                      ClientDto clientDto) {
         super();
         this.id = id;
         this.accountNumber = accountNumber;
@@ -26,7 +19,6 @@ public class AccountDto {
         this.agencyTelephone = agencyTelephone;
         this.accountBalance = accountBalance;
         this.clientDto = clientDto;
-        this.accountStatus = accountStatus;
     }
 
     public AccountDto(){}
@@ -88,11 +80,11 @@ public class AccountDto {
         this.clientDto = clientDto;
     }
 
-    public AccountStatusEnum getAccountStatus() {
+    public boolean getAccountStatus() {
         return accountStatus;
     }
 
-    public void setAccountStatus(AccountStatusEnum accountStatus) {
+    public void setAccountStatus(boolean accountStatus) {
         this.accountStatus = accountStatus;
     }
     

@@ -23,7 +23,7 @@ public class Client extends SuperEntity{
     private String fulladdress;
     private boolean acceptStorageLgpd;
     
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "client")
     @JsonIgnore
     private List<Account> account = new ArrayList<>();
 

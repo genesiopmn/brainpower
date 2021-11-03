@@ -1,7 +1,6 @@
 package br.com.brainpower.bluebank.service;
 
 import br.com.brainpower.bluebank.dto.ClientDto;
-import br.com.brainpower.bluebank.enums.AccountStatusEnum;
 import br.com.brainpower.bluebank.dto.AccountDto;
 import br.com.brainpower.bluebank.entity.Account;
 import br.com.brainpower.bluebank.entity.Client;
@@ -19,7 +18,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class AccountService {
@@ -70,20 +68,41 @@ public class AccountService {
         return accountDto; 
     }
 
-    public List<AccountDto> findAllByIdClient(Integer id){
-        //talvez o ideal aqui fosse buscar por cpf/doc de identificação
-        Client client = clientRepository.findById(id).get();
-        return accountRepository.findAllByClient(client).stream().map(AccountFactory::convertAccountDto).collect(Collectors.toList());
+    public AccountDto findAllByIdentificationDocument(String identificationDocument){
+        Account account = accountRepository.findByidentificationDocument(identificationDocument);
+        if(account == null){
+            throw new ResourceNotFoundException("id not found");    
+        } 
+        if(!AccountFactory.checkStatus(account)){
+            throw new ResourceNotFoundException("id not found");    
+        }
+        return AccountFactory.convertAccountDto(account);
     }
 
     public void disableAccountById(Integer id){
-        var account = findById(id);
-        account.setAccountStatus(AccountStatusEnum.INACTIVE);
+        Optional<Account> accountOptional = accountRepository.findById(id);
+        Account account = accountOptional.get();
+        if(accountOptional.isEmpty()){
+            throw new ResourceNotFoundException("id not found");
+        }
+        if(!AccountFactory.checkStatus(account)){
+            throw new ResourceNotFoundException("id not found");    
+        }
+        account.setAccountStatus(false);
+        accountRepository.save(account);
     }
 
     public void reactivateAccountById(Integer id){
-        var account = findById(id);
-        account.setAccountStatus(AccountStatusEnum.ACTIVE);
+        Optional<Account> accountOptional = accountRepository.findById(id);
+        Account account = accountOptional.get();
+        if(accountOptional.isEmpty()){
+            throw new ResourceNotFoundException("id not found");
+        }
+        if(!AccountFactory.checkStatus(account)){
+            throw new ResourceNotFoundException("id not found");
+        }
+        account.setAccountStatus(true);
+        accountRepository.save(account);
     }
 
     public AccountDto saveAccount(AccountForm accountForm){

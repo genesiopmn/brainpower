@@ -28,11 +28,11 @@ public class AccountController {
         AccountDto accountDto = service.findById(id);
         return ResponseEntity.ok(accountDto);
     }
-    //Comentei porque estava trazendo o outro
-    //@GetMapping(value = "/{idClient}")
-    //public ResponseEntity<List<AccountDto>> findAllByClient(@PathVariable Integer id){
-    //    return ResponseEntity.ok(service.findAllByIdClient(id));
-    //}
+    
+    @GetMapping(value = "/identificationDocument/{identificationDocument}")
+    public ResponseEntity<AccountDto> findAllByClientIdentificationDocument(@PathVariable String identificationDocument){
+        return ResponseEntity.ok(service.findAllByIdentificationDocument(identificationDocument));
+    }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteById(@PathVariable Integer id){
@@ -40,22 +40,23 @@ public class AccountController {
         return ResponseEntity.ok().build();
     }
 
+    // Essa função precisa ser revista quando for mergeada na master, pois precisa do endereço
     @PostMapping
     public ResponseEntity<AccountDto> saveAccount(@RequestBody AccountForm form, UriComponentsBuilder uriBuilder){
         AccountDto accountDto = service.saveAccount(form);
-        URI uri = uriBuilder.path("/accounts/{id}").buildAndExpand(accountDto.getId()).toUri();
+        URI uri = uriBuilder.path("/account/{id}").buildAndExpand(accountDto.getId()).toUri();
         return ResponseEntity.created(uri).body(accountDto);
     }
 
-    /*@PutMapping (value = "/{id}")
+    @PutMapping (value = "disabled/{id}")
     public ResponseEntity disableAccountById(@PathVariable Integer id){
         service.disableAccountById(id);
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/reactive/{id}")
     public ResponseEntity reactivateAccountById(@PathVariable Integer id){
         service.reactivateAccountById(id);
         return ResponseEntity.ok().build();
-    }*/
+    }
 }

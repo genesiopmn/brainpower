@@ -1,12 +1,18 @@
 package br.com.brainpower.bluebank.factory;
 
 import br.com.brainpower.bluebank.dto.AccountDto;
+import br.com.brainpower.bluebank.dto.ClientDto;
 import br.com.brainpower.bluebank.entity.Account;
 import br.com.brainpower.bluebank.entity.Client;
 import br.com.brainpower.bluebank.form.AccountForm;
+import br.com.brainpower.bluebank.service.ClientService;
 import br.com.brainpower.bluebank.service.exceptions.ResourceNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class AccountFactory {
+    
+    @Autowired
+    private ClientService clientService;
 
     public static AccountDto convertAccountDto(Account account){
         AccountDto accountDto = new AccountDto();
@@ -16,12 +22,14 @@ public class AccountFactory {
         accountDto.setAgencyTelephone(account.getAgencyTelephone());
         accountDto.setAccountBalance(account.getAccountBalance());
         accountDto.setId(account.getId());
-        accountDto.setAccountStatus(account.getAccountStatus());
+        accountDto.setAccountStatus(true);       
         
+        Client client = account.getClient();      
         
+        ClientDto clientDto = ClientFactory.convertClientDto(client);
+        accountDto.setClient(clientDto);
         
-
-        if(!checkStatus(account)){
+       if(!checkStatus(account)){
             throw new ResourceNotFoundException("id not found");
         }
         return accountDto;
@@ -38,8 +46,11 @@ public class AccountFactory {
     }
 
     public static boolean checkStatus(Account account){
-        if(account.isActive()) return true;
-        return false;
+        if(account.isActive()){
+            return true;
+        } else {
+            return false;    
+        }        
     }
 
     public static void disableStatus(Account account){

@@ -1,8 +1,5 @@
 package br.com.brainpower.bluebank.entity;
 
-import br.com.brainpower.bluebank.enums.AccountStatusEnum;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
@@ -16,18 +13,16 @@ public class Account extends SuperEntity{
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
     private Client client;
-    @Enumerated(value = EnumType.ORDINAL)
-    private AccountStatusEnum accountStatus;
+    private boolean accountStatus = true;
 
     public Account(String accountNumber, String agencyNumber, String agencyTelephone, double accountBalance,
-                   Client client, AccountStatusEnum accountStatus) {
+                   Client client) {
         super();
         this.accountNumber = accountNumber;
         this.agencyNumber = agencyNumber;
         this.agencyTelephone = agencyTelephone;
         this.accountBalance = accountBalance;
         this.client = client;
-        this.accountStatus = accountStatus;
     }
 
     public Account(){}
@@ -70,12 +65,19 @@ public class Account extends SuperEntity{
         this.agencyTelephone = agencyTelephone;
     }
 
-    public AccountStatusEnum getAccountStatus() {
+    public boolean getAccountStatus() {
         return accountStatus;
     }
 
     public Client getClient() {
         return client;
     }
-    
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public void setAccountStatus(boolean accountStatus) {
+        this.accountStatus = accountStatus;
+    }
 }
