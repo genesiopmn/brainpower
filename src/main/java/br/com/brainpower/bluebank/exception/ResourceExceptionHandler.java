@@ -19,4 +19,12 @@ public class ResourceExceptionHandler {
         StandardError standardError = new StandardError(Instant.now(), httpStatus.value(), error, resourceNotFoundException.getMessage(), httpServletRequest.getRequestURI());
         return ResponseEntity.status(httpStatus).body(standardError);
     }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<StandardError> illegalArgumentException(IllegalArgumentException illegalArgumentException, HttpServletRequest httpServletRequest){
+        String error = "Enum not found";
+        HttpStatus httpStatus = HttpStatus.NOT_FOUND;
+        StandardError standardError = new StandardError(Instant.now(), httpStatus.value(), error, illegalArgumentException.getMessage(), httpServletRequest.getRequestURI());
+        return ResponseEntity.status(httpStatus).body(standardError);
+    }
 }
