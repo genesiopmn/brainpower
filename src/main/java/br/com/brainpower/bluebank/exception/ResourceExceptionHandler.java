@@ -27,4 +27,11 @@ public class ResourceExceptionHandler {
         StandardError standardError = new StandardError(Instant.now(), httpStatus.value(), error, illegalArgumentException.getMessage(), httpServletRequest.getRequestURI());
         return ResponseEntity.status(httpStatus).body(standardError);
     }
+    @ExceptionHandler(AccountDisableException.class)
+    public ResponseEntity<StandardError> accountDisableException(AccountDisableException accountDisableException, HttpServletRequest httpServletRequest){
+        String error = "Enum not found";
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+        StandardError standardError = new StandardError(Instant.now(), httpStatus.value(), error, accountDisableException.getMessage(), httpServletRequest.getRequestURI());
+        return ResponseEntity.status(httpStatus).body(standardError);
+    }
 }
