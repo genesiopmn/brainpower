@@ -1,6 +1,7 @@
 package br.com.brainpower.bluebank.entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "account")
@@ -9,13 +10,13 @@ public class Account extends SuperEntity{
     private String accountNumber;
     private String agencyNumber;
     private String agencyTelephone;
-    private double accountBalance;
+    private BigDecimal accountBalance;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
     private Client client;
     private boolean accountStatus = true;
 
-    public Account(String accountNumber, String agencyNumber, String agencyTelephone, double accountBalance,
+    public Account(String accountNumber, String agencyNumber, String agencyTelephone, BigDecimal accountBalance,
                    Client client) {
         super();
         this.accountNumber = accountNumber;
@@ -47,14 +48,8 @@ public class Account extends SuperEntity{
         this.agencyNumber = agencyNumber;
     }
 
-    public double getAccountBalance() {
-
+    public BigDecimal getAccountBalance() {
         return accountBalance;
-    }
-
-    public void setAccountBalance(double accountBalance) {
-
-        this.accountBalance = accountBalance;
     }
 
     public String getAgencyTelephone() {
@@ -79,5 +74,13 @@ public class Account extends SuperEntity{
 
     public void setAccountStatus(boolean accountStatus) {
         this.accountStatus = accountStatus;
+    }
+    
+    public void addAccountBalance(BigDecimal value){
+        this.accountBalance.add(BigDecimal.valueOf(value.doubleValue()));
+    }
+    
+    public void subtractAccountBalance(BigDecimal value){
+        this.accountBalance.subtract(BigDecimal.valueOf(value.doubleValue()));
     }
 }

@@ -40,7 +40,6 @@ public class AccountFactory {
         account.setAccountNumber(accountForm.getAccountNumber());
         account.setAgencyNumber(accountForm.getAgencyNumber());
         account.setAgencyTelephone(accountForm.getAgencyTelephone());
-        account.setAccountBalance(accountForm.getAccountBalance());
 
         return account;
     }

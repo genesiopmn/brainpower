@@ -34,4 +34,11 @@ public class ResourceExceptionHandler {
         StandardError standardError = new StandardError(Instant.now(), httpStatus.value(), error, accountDisableException.getMessage(), httpServletRequest.getRequestURI());
         return ResponseEntity.status(httpStatus).body(standardError);
     }
+    @ExceptionHandler(NoBalanceAccount.class)
+    public ResponseEntity<StandardError> NoBalanceAccount(NoBalanceAccount noBalanceAccount, HttpServletRequest httpServletRequest){
+        String error = "Enum not found";
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+        StandardError standardError = new StandardError(Instant.now(), httpStatus.value(), error, noBalanceAccount.getMessage(), httpServletRequest.getRequestURI());
+        return ResponseEntity.status(httpStatus).body(standardError);
+    }
 }

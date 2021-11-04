@@ -3,6 +3,8 @@ package br.com.brainpower.bluebank.form;
 import br.com.brainpower.bluebank.entity.Client;
 import org.hibernate.annotations.NotFound;
 
+import java.math.BigDecimal;
+
 public class AccountForm {
 
     @NotFound
@@ -12,12 +14,12 @@ public class AccountForm {
     @NotFound
     private String agencyTelephone;
     @NotFound
-    private double accountBalance;
+    private BigDecimal accountBalance;
     @NotFound
     private Client client;
 
 
-    public AccountForm(String accountNumber, String agencyNumber, String agencyTelephone, double accountBalance,
+    public AccountForm(String accountNumber, String agencyNumber, String agencyTelephone, BigDecimal accountBalance,
                            Client client) {
         this.accountNumber = accountNumber;
         this.agencyNumber = agencyNumber;
@@ -38,7 +40,7 @@ public class AccountForm {
         return agencyTelephone;
     }
 
-    public double getAccountBalance() {
+    public BigDecimal getAccountBalance() {
         return accountBalance;
     }
 
