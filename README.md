@@ -22,8 +22,19 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Modelagem do Banco de Dados
 - [x] Crud Cliente (BP-001)
 - [x] Tratamento de Exceção Centralizada
+- [x] Crud Conta (feature/crud-account)
+- [x] Geração Script SQL
+- [x] Backlog do Projeto
+- [ ] Criar um tratamento centralizado e genérico da classe Exception na classe ExceptionHandler
+- [ ] Providenciar o tratamento de Exceção para a Exception Data Integration
+- [ ] Testar Desabilitados
+- [ ] Tratar verificação da conta centralizado
+- [ ] Alterar os tipos de dados em todos os lugares para BigDecimal
+- [ ] Criação do Diagrama Classes
+- [ ] Geração de Testes Automatizados
 - [ ] Relatório Account - Client - historyTransaction
 - [ ] Função Post (Cadastrar Conta)
+- [ ] Reunião Entrega Final
 
 ## 💻 Pré-requisitos
 
