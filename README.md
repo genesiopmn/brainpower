@@ -1,4 +1,4 @@
-# Equipe BrainPower Academia IBM Gama Glue-Accademy
+# Equipe BrainPower Academia IBM Gama Blue-Accademy
 
 # API Rest(bluebank)
 
@@ -10,7 +10,8 @@
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/iuricode/README-template?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/iuricode/README-template?style=for-the-badge)
 
-<img src="https://trello.com/1/cards/617d843a84b6bd48e77fbde8/attachments/618416eb93f0b5285be31b8f/previews/618416eb93f0b5285be31b95/download/API_Rest_V2.png" alt="exemplo imagem">
+### Modelo de Entidade Relacional
+<img src="https://github.com/genesiopmn/brainpower/blob/master/API%20Rest_V2.png" alt="Modelo de Entidade Relacional">
 
 > Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
 
@@ -92,7 +93,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     </td>
     <td align="center">
       <a href="#">
-        <img src=https://lh3.google.com/u/0/d/1hTQ81j0UjLN7jhD4mZ2dEFE-49-F98_i=w320-h200-k-iv1" width="100px;" alt=""/><br>
+        <img src="https://github.com/genesiopmn/brainpower/blob/master/MarcusVinicius.jpg" width="100px;" alt=""/><br>
         <sub>
           <b>Marcus Vinícius</b>
         </sub>
