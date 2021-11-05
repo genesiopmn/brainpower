@@ -4,11 +4,11 @@
 
 <!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 
-![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/README-template?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/iuricode/README-template?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/iuricode/README-template?style=for-the-badge)
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues/iuricode/README-template?style=for-the-badge)
-![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/iuricode/README-template?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/brainpower/README?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/brainpower/README?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/brainpower/README?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/brainpower/README?style=for-the-badge)
+![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/brainpower/README?style=for-the-badge)
 
 ### Modelo de Entidade Relacional
 <img src="https://github.com/genesiopmn/brainpower/blob/master/API%20Rest_V2.png" alt="Modelo de Entidade Relacional">
@@ -102,13 +102,8 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
   </tr>
 </table>
 
-
-## 😄 Seja um dos contribuidores<br>
-
-Quer fazer parte desse projeto? Clique [AQUI](CONTRIBUTING.md) e leia como contribuir.
-
 ## 📝 Licença
 
 Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
 
-[⬆ Voltar ao topo](#nome-do-projeto)<br>
+[⬆ Voltar ao topo](#genesiopmn/brainpower)<br>
