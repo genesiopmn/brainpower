@@ -113,6 +113,13 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
   </tr>
 </table>
 
+## Linguagens 
+
+* [MySQL](https://mysql.com/)
+* [Java](https://java.com)
+* [Spring boot](https://spring.io)
+* [JQuery](https://jquery.com)
+
 ## 📝 Licença
 
 Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
