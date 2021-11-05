@@ -76,7 +76,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
   <tr>
     <td align="center">
       <a href="#">
-        <img src="https://trello-members.s3.amazonaws.com/58a0b39d528bd66fd8deaa8f/f34bc0899a13bb4be201ef338e5f4247/original.png" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
+        <img src="https://trello-members.s3.amazonaws.com/58a0b39d528bd66fd8deaa8f/f34bc0899a13bb4be201ef338e5f4247/original.png" width="100px;" alt=""/><br>
         <sub>
           <b>Natalia Maldaner</b>
         </sub>
@@ -84,7 +84,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     </td>
     <td align="center">
       <a href="#">
-        <img src="https://trello-members.s3.amazonaws.com/5e15d6f6903f2771272dd3e7/d84d242ed987cacde40d15abdd12855b/original.png" width="100px;" alt="Foto do Mark Zuckerberg"/><br>
+        <img src="https://trello-members.s3.amazonaws.com/5e15d6f6903f2771272dd3e7/d84d242ed987cacde40d15abdd12855b/original.png" width="100px;" alt=""/><br>
         <sub>
           <b>Genésio Pereira</b>
         </sub>
@@ -92,7 +92,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     </td>
     <td align="center">
       <a href="#">
-        <img src="https://web.whatsapp.com/pp?e=https%3A%2F%2Fpps.whatsapp.net%2Fv%2Ft61.24694-24%2F226114908_568890117631857_985755000427647151_n.jpg%3Fccb%3D11-4%26oh%3D4d73daae6796d37668cc85a2cf17fecc%26oe%3D6189D8E8&t=l&u=5511993527709%40c.us&i=1631567021&n=63Uw1yjSd04lINrfU6cSk8A8wyJDr9fhSUoH9JQNfyc%3D" width="100px;" alt="Foto do Steve Jobs"/><br>
+        <img src=https://lh3.google.com/u/0/d/1hTQ81j0UjLN7jhD4mZ2dEFE-49-F98_i=w320-h200-k-iv1" width="100px;" alt=""/><br>
         <sub>
           <b>Marcus Vinícius</b>
         </sub>
