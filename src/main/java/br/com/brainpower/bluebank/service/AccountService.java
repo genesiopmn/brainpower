@@ -33,12 +33,16 @@ public class AccountService {
         List<AccountDto> listAccountDto = new ArrayList<>();
         for(Account account : listAccount){
             int idClient = account.getClient().getId();
-            Client client = clientRepository.findById(idClient).get();
-            ClientDto clientDto = ClientFactory.convertClientDto(client);
-            AccountDto accountDto = AccountFactory.convertAccountDto(account);
-            accountDto.setClient(clientDto);
-            clientDto.addListAccountDto(accountDto);
-            listAccountDto.add(accountDto);
+            Optional<Client> clientOptional = clientRepository.findById(idClient);
+            if(!clientOptional.isEmpty() && clientOptional.get().isActive() && account.getAccountStatus() == true && account.isActive()){
+                Client client = clientOptional.get();
+                ClientDto clientDto = ClientFactory.convertClientDto(client);
+                AccountDto accountDto = AccountFactory.convertAccountDto(account);
+                accountDto.setClient(clientDto);
+                clientDto.addListAccountDto(accountDto);
+                listAccountDto.add(accountDto);
+            }         
+            
         }
         
         return listAccountDto;
@@ -60,11 +64,14 @@ public class AccountService {
         if(!ClientFactory.checkStatus(clientOptional.get())){
             throw new ResourceNotFoundException("id not found");
         }
-        Client client = clientOptional.get();
-        ClientDto clientDto = ClientFactory.convertClientDto(client);
-        AccountDto accountDto = AccountFactory.convertAccountDto(account);
-        clientDto.addListAccountDto(accountDto);
-        accountDto.setClient(clientDto);
+        AccountDto accountDto = null;
+        if(!clientOptional.isEmpty() && clientOptional.get().isActive() && account.getAccountStatus() == true && account.isActive()) {
+            Client client = clientOptional.get();
+            ClientDto clientDto = ClientFactory.convertClientDto(client);
+            accountDto = AccountFactory.convertAccountDto(account);
+            clientDto.addListAccountDto(accountDto);
+            accountDto.setClient(clientDto);
+        }    
         return accountDto; 
     }
 
@@ -74,7 +81,10 @@ public class AccountService {
             throw new ResourceNotFoundException("id not found");    
         } 
         if(!AccountFactory.checkStatus(account)){
-            throw new ResourceNotFoundException("id not found");    
+             
+        }
+        if(account.isActive()){
+            throw new ResourceNotFoundException("Account not Active");
         }
         return AccountFactory.convertAccountDto(account);
     }

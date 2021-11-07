@@ -35,6 +35,12 @@ public class TransactionHistory extends SuperEntity{
         this.destination = destination;
     }
 
+    public TransactionHistory(BigDecimal value, Account origin, Account destination) {
+        this.value = value;
+        this.origin = origin;
+        this.destination = destination;
+    }
+
     public String getHistory() {
         return history;
     }
@@ -53,5 +59,9 @@ public class TransactionHistory extends SuperEntity{
 
     public Account getDestination() {
         return destination;
+    }
+
+    public void setHistory(String history) {
+        this.history = history;
     }
 }

@@ -1,16 +1,18 @@
 package br.com.brainpower.bluebank.dto;
 
+import java.math.BigDecimal;
+
 public class AccountDto {
 
     private Integer id;
     private String accountNumber;
     private String agencyNumber;
     private String agencyTelephone;
-    private double accountBalance;
+    private BigDecimal accountBalance;
     private ClientDto clientDto;
     private boolean accountStatus = true;
 
-    public AccountDto(Integer id, String accountNumber, String agencyNumber, String agencyTelephone, double accountBalance,
+    public AccountDto(Integer id, String accountNumber, String agencyNumber, String agencyTelephone, BigDecimal accountBalance,
                       ClientDto clientDto) {
         super();
         this.id = id;
@@ -52,12 +54,11 @@ public class AccountDto {
         this.agencyNumber = agencyNumber;
     }
 
-    public double getAccountBalance() {
-
+    public BigDecimal getAccountBalance() {
         return accountBalance;
     }
 
-    public void setAccountBalance(double accountBalance) {
+    public void setAccountBalance(BigDecimal accountBalance) {
 
         this.accountBalance = accountBalance;
     }

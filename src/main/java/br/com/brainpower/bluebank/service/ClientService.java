@@ -65,7 +65,7 @@ public class ClientService {
         Client client = clientOptional.get();
         Client clientUpdate = ClientFactory.updateFullAdress(client, updateClientFullAdressForm);
         clientUpdate.setUpdatedAt(LocalDateTime.now());
-        clientRepository.save(clientUpdate);
+        clientRepository.save(clientUpdate);                                                                  
         return ClientFactory.convertClientDto(clientUpdate);
     }
 }
