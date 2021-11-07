@@ -28,10 +28,6 @@ public class AccountFactory {
         
         ClientDto clientDto = ClientFactory.convertClientDto(client);
         accountDto.setClient(clientDto);
-        
-       if(!checkStatus(account)){
-            throw new ResourceNotFoundException("id not found");
-        }
         return accountDto;
     }
 

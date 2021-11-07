@@ -21,6 +21,8 @@ public class TransactionHistoryForm {
         this.idDestinationAccount = idDestinationAccount;
         this.value = value;
     }
+    
+    public TransactionHistoryForm(){}
 
     public Integer getIdOriginAccount() {
         return idOriginAccount;

@@ -9,7 +9,9 @@ import br.com.brainpower.bluebank.repository.AccountRepository;
 import br.com.brainpower.bluebank.repository.TransactionHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -34,15 +36,16 @@ public class TransactionHistoryService {
         if(CheckAccount.checkAccountBalance(transactionHistoryForm.getValue(),originAccount,accountRepository,destinAccount)){
             TransactionHistory transactionHistory = TransactionHistoryFactory.convertTransactionHistory(transactionHistoryForm,originAccount,destinAccount);
             transactionHistoryRepository.save(transactionHistory);    
-        }        
+        }
     }
     
-    public List<TransactionHistoryDto> findByIdAccount(Integer id){
-        List<TransactionHistory> listTransactionHistory = transactionHistoryRepository.findByIdAccount(id);
+    public List<TransactionHistoryDto> findByIdAccount(String accountNumber){
+        List<TransactionHistory> listTransactionHistory = transactionHistoryRepository.findByIdAccount(accountNumber);
         return listTransactionHistory.stream().map(TransactionHistoryFactory::convertTransactionHistoryDto).collect(Collectors.toList());
     }
     
-    public List<TransactionHistoryDto> findByIdClient(Integer id){
-        List<TransactionHistory> listTransactionHistory = transactionHistoryRepository
+    public List<TransactionHistoryDto> findByIdClient(String identificationDocument){
+        List<TransactionHistory> listTransactionHistory = transactionHistoryRepository.findByIdentificationDocument(identificationDocument);
+        return listTransactionHistory.stream().map(TransactionHistoryFactory::convertTransactionHistoryDto).collect(Collectors.toList());
     }
 }

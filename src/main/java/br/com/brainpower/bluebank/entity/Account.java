@@ -77,10 +77,10 @@ public class Account extends SuperEntity{
     }
     
     public void addAccountBalance(BigDecimal value){
-        this.accountBalance.add(BigDecimal.valueOf(value.doubleValue()));
+        this.accountBalance = this.accountBalance.add(value);
     }
     
     public void subtractAccountBalance(BigDecimal value){
-        this.accountBalance.subtract(BigDecimal.valueOf(value.doubleValue()));
+        this.accountBalance = this.accountBalance.subtract(value);
     }
 }
