@@ -24,13 +24,7 @@ public class TestConfig implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         
-        Client client1 = new Client("Laura","1234567899","laura@gmail.com","1182734628", 
-                LocalDate.of(2000,10,20));
-        FullAddress fullAddress = new FullAddress("Rua Gouveia",100,"Centro","São Paulo","00000-130","SP","Brasil",client1);
-                   
-        client1.addListFullAddress(fullAddress);
-        clientRepository.save(client1);
-        fullAddressRepository.save(fullAddress);
+      
         
     }
 }
