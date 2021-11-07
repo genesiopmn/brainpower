@@ -7,6 +7,10 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+/**
+ * Entidade SuperEntity (Mapeamento Objeto Relacional)
+ * Classe que controla todas as entidades do mapeamento relacional
+ */
 @MappedSuperclass
 public class SuperEntity {
 

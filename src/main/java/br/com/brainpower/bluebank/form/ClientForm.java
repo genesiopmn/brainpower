@@ -1,11 +1,13 @@
 package br.com.brainpower.bluebank.form;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.NotFound;
 
 import java.time.LocalDate;
 
+/**
+ * Campos possíveis para cadastrar um cliente. Padrão Formulário.
+ */
 public class ClientForm {
     
     @NotFound

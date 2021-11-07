@@ -9,6 +9,9 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * Entidade TransactionHistory (Mapeamento Objeto Relacional)
+ */
 @Entity
 @Table(name = "transactionHistory")
 public class TransactionHistory extends SuperEntity{
