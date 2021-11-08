@@ -4,7 +4,6 @@ import br.com.brainpower.bluebank.dto.ClientDto;
 import br.com.brainpower.bluebank.entity.Client;
 import br.com.brainpower.bluebank.factory.ClientFactory;
 import br.com.brainpower.bluebank.form.ClientForm;
-import br.com.brainpower.bluebank.form.UpdateClientFullAdressForm;
 import br.com.brainpower.bluebank.repository.ClientRepository;
 import br.com.brainpower.bluebank.service.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -26,10 +24,17 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
+    
+    @Autowired
+    private FullAddressService fullAddressService;
+    
+
+
     /**
      * Função que trazem todos os clientes do banco de dados
      * @return lista com todos os clientes
      */
+
     public List<ClientDto> findAll(){
         return clientRepository.findAll().stream().map(ClientFactory::convertClientDto).collect(Collectors.toList());
     }
@@ -75,8 +80,10 @@ public class ClientService {
     public ClientDto save(ClientForm clientForm){
         Client client = ClientFactory.convertClient(clientForm);
         clientRepository.save(client);
+        fullAddressService.saveFullAddress(client.getListFullAddress());
         return ClientFactory.convertClientDto(client);
     }
+
 
     /**
      * Função que atualiza o endereço de entrega
@@ -95,4 +102,5 @@ public class ClientService {
         clientRepository.save(clientUpdate);                                                                  
         return ClientFactory.convertClientDto(clientUpdate);
     }
+
 }

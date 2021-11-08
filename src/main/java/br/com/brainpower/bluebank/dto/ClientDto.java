@@ -6,11 +6,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.UUID;
+
+
+
 /**
  *
  * Classe Data Transfer Object (DTO) para o Cliente
  * 
  */
+
 public class ClientDto {
     
     private Integer id;
@@ -19,18 +24,21 @@ public class ClientDto {
     private String email;
     private String telephone;
     private LocalDate birthdate;
+
+    private List<FullAddressDto> listFulladdress = new ArrayList<>();
+
     private String fulladdress;
     @JsonIgnore
     private List<AccountDto> listaccountDto = new ArrayList<>(); 
 
-    public ClientDto(Integer id, String name, String identificationDocument, String email, String telephone, LocalDate birthdate, String fulladdress) {
+
+    public ClientDto(Integer id, String name, String identificationDocument, String email, String telephone, LocalDate birthdate) {
         this.id = id;
         this.name = name;
         this.identificationDocument = identificationDocument;
         this.email = email;
         this.telephone = telephone;
         this.birthdate = birthdate;
-        this.fulladdress = fulladdress;
     }
     
     public ClientDto() {}
@@ -59,10 +67,6 @@ public class ClientDto {
         this.birthdate = birthdate;
     }
 
-    public void setFulladdress(String fulladdress) {
-        this.fulladdress = fulladdress;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -87,8 +91,12 @@ public class ClientDto {
         return birthdate;
     }
 
-    public String getFulladdress() {
-        return fulladdress;
+    public List<FullAddressDto> getFulladdress() {
+        return listFulladdress;
+    }
+    
+    public void addFullAddressDto(FullAddressDto fullAddressDto){
+        this.listFulladdress.add(fullAddressDto);
     }
 
     public List<AccountDto> getListaccountDto() {

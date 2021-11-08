@@ -2,10 +2,12 @@ package br.com.brainpower.bluebank.config;
 
 import br.com.brainpower.bluebank.entity.Account;
 import br.com.brainpower.bluebank.entity.Client;
+
 import br.com.brainpower.bluebank.entity.TransactionHistory;
 import br.com.brainpower.bluebank.repository.AccountRepository;
 import br.com.brainpower.bluebank.repository.ClientRepository;
 import br.com.brainpower.bluebank.repository.TransactionHistoryRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +24,15 @@ public class TestConfig implements CommandLineRunner {
     private ClientRepository clientRepository;
     
     @Autowired
+
+    private FullAddressRepository fullAddressRepository;
+    
+    @Override
+    public void run(String... args) throws Exception {
+        
+      
+        
+
     private AccountRepository accountRepository;
     
     @Autowired
@@ -70,5 +81,6 @@ public class TestConfig implements CommandLineRunner {
         accountRepository.save(account4);
         accountRepository.save(account5);
         transactionHistoryRepository.save(transactionHistory);
+
     }
 }

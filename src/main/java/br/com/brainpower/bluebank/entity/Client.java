@@ -23,21 +23,21 @@ public class Client extends SuperEntity{
     private String telephone;
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern="yyyy/MM/dddd")
     private LocalDate birthdate;
-    private String fulladdress;
     private boolean acceptStorageLgpd;
     
     @OneToMany(mappedBy = "client")
     @JsonIgnore
     private List<Account> account = new ArrayList<>();
 
-    public Client(String name, String identificationDocument, String email, String telephone, LocalDate birthdate, String fulladdress) {
-        super();
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<FullAddress> listFullAddress = new ArrayList<>();
+
+    public Client(String name, String identificationDocument, String email, String telephone, LocalDate birthdate) {
         this.name = name;
         this.identificationDocument = identificationDocument;
         this.email = email;
         this.telephone = telephone;
         this.birthdate = birthdate;
-        this.fulladdress = fulladdress;
         this.acceptStorageLgpd = true;
     }
     public Client (){}    
@@ -60,10 +60,6 @@ public class Client extends SuperEntity{
 
     public LocalDate getBirthdate() {
         return birthdate;
-    }
-
-    public String getFulladdress() {
-        return fulladdress;
     }
 
     public boolean isAcceptStorageLgpd() {
@@ -90,8 +86,16 @@ public class Client extends SuperEntity{
         this.birthdate = birthdate;
     }
 
-    public void setFulladdress(String fulladdress) {
-        this.fulladdress = fulladdress;
+    public List<FullAddress> getListFullAddress() {
+        return listFullAddress;
+    }
+    
+    public void addListFullAddress(FullAddress fullAddress){
+        this.listFullAddress.add(fullAddress);
+    }
+
+    public void setListFullAddress(List<FullAddress> listFullAddress) {
+        this.listFullAddress = listFullAddress;
     }
 
     public List<Account> getAccount() {
