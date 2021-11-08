@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Campos possíveis para cadastrar um cliente. Padrão Formulário.
+ */
 public class ClientForm {
     
     @NotFound

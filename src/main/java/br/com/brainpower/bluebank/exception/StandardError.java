@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.Instant;
 
+/**
+ * Classe que representa uma resposta padrão.
+ */
 public class StandardError {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")

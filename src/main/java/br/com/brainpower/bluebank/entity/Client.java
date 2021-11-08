@@ -1,6 +1,7 @@
 package br.com.brainpower.bluebank.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.tomcat.jni.Local;
 
 import javax.persistence.CascadeType;
@@ -10,6 +11,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Entidade Client (Mapeamento Objeto Relacional)
+ */
 @Entity
 public class Client extends SuperEntity{
     
@@ -20,6 +24,10 @@ public class Client extends SuperEntity{
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern="yyyy/MM/dddd")
     private LocalDate birthdate;
     private boolean acceptStorageLgpd;
+    
+    @OneToMany(mappedBy = "client")
+    @JsonIgnore
+    private List<Account> account = new ArrayList<>();
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<FullAddress> listFullAddress = new ArrayList<>();
@@ -88,5 +96,9 @@ public class Client extends SuperEntity{
 
     public void setListFullAddress(List<FullAddress> listFullAddress) {
         this.listFullAddress = listFullAddress;
+    }
+
+    public List<Account> getAccount() {
+        return account;
     }
 }
