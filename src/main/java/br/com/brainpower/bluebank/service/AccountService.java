@@ -72,6 +72,9 @@ public class AccountService {
         if(!AccountFactory.checkStatus(accountOptional.get())){
             throw new ResourceNotFoundException("id not found");
         }
+        if(!accountOptional.get().getAccountStatus()){
+            throw new ResourceNotFoundException("id not found");    
+        }
         Account account = accountOptional.get();
         Optional<Client> clientOptional = clientRepository.findById(account.getClient().getId());
         if(clientOptional.isEmpty()){
@@ -102,9 +105,9 @@ public class AccountService {
             throw new ResourceNotFoundException("id not found");    
         } 
         if(!AccountFactory.checkStatus(account)){
-             
+            throw new ResourceNotFoundException("id not found");     
         }
-        if(account.isActive()){
+        if(!account.isActive()){
             throw new ResourceNotFoundException("Account not Active");
         }
         return AccountFactory.convertAccountDto(account);

@@ -8,7 +8,6 @@ import br.com.brainpower.bluebank.form.FullAddressForm;
 import br.com.brainpower.bluebank.form.UpdateClientFullAddressForm;
 import br.com.brainpower.bluebank.service.exceptions.ResourceNotFoundException;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,13 +32,10 @@ public class ClientFactory {
         clientDto.setIdentificationDocument(client.getIdentificationDocument());
         clientDto.setTelephone(client.getTelephone());
         for(FullAddress fullAddress : client.getListFullAddress()){
-            clientDto.addFullAddressDto(FullAddressFactory.convertFullAddressDto(fullAddress));    
+            clientDto.addFullAddressDto(FullAddressFactory.convertFullAddressDto(fullAddress));
         }
-        
-        if(!checkStatus(client)){
-            throw new ResourceNotFoundException("id not found");
-        }
-        return clientDto;
+        return clientDto; 
+               
     }
 
     /**
@@ -77,15 +73,21 @@ public class ClientFactory {
 
     /**
      * Função que atualiza o endereço do cliente
-     * @param client - paramentro com o objeto do tipo cliente para atualizar
+     * @param fullAddress - paramentro com o objeto do tipo fulladdress para atualizar
      * @param updateClientFullAdressForm informações novas para atualizar o cliente
      * @return retorna o cliente atualizado
      */
-    public static Client updateFullAdress(Client client, UpdateClientFullAdressForm updateClientFullAdressForm){
-        client.setFulladdress(updateClientFullAdressForm.getFulladdress());
-
+    public static FullAddress updateFullAdress(FullAddress fullAddress, UpdateClientFullAddressForm updateClientFullAdressForm){
+        fullAddress.setZipCode(updateClientFullAdressForm.getZipCode());
+        fullAddress.setAddress(updateClientFullAdressForm.getAddress());
+        fullAddress.setCity(fullAddress.getCity());
+        fullAddress.setCountry(updateClientFullAdressForm.getCountry());
+        fullAddress.setDistrict(updateClientFullAdressForm.getDistrict());
+        fullAddress.setNumber(updateClientFullAdressForm.getNumber());
+        fullAddress.setState(updateClientFullAdressForm.getState());
+        fullAddress.setComplement(updateClientFullAdressForm.getComplement());
         
-        return client;
+        return fullAddress;
     }
 
     /**

@@ -62,7 +62,12 @@ public class AccountController {
         return ResponseEntity.ok().build();
     }
 
-    // Essa função precisa ser revista quando for mergeada na master, pois precisa do endereço
+    /**
+     * Função com o objetivo de cadastrar uma nova conta
+     * @param form formulário com as informações de cadastro
+     * @param uriBuilder URL de retorno da API
+     * @return retorno do cliente criado
+     */
     @PostMapping
     public ResponseEntity<AccountDto> saveAccount(@RequestBody AccountForm form, UriComponentsBuilder uriBuilder){
         AccountDto accountDto = service.saveAccount(form);
