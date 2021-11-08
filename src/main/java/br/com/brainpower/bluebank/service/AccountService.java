@@ -60,7 +60,7 @@ public class AccountService {
             throw new ResourceNotFoundException("id not found");
         }
         Account account = accountOptional.get();
-        Optional<Client> clientOptional = clientRepository.findById(account.getId());
+        Optional<Client> clientOptional = clientRepository.findById(account.getClient().getId());
         if(clientOptional.isEmpty()){
             throw new ResourceNotFoundException("id not found");
         }
