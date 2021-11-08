@@ -6,6 +6,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * Classe Data Transfer Object (DTO) para o Cliente
+ * 
+ */
 public class ClientDto {
     
     private Integer id;

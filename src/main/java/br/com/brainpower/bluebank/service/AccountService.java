@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Classe com a regra de negócio para a conta
+ */
 @Service
 public class AccountService {
 
@@ -28,6 +31,10 @@ public class AccountService {
     @Autowired
     private ClientRepository clientRepository;
 
+    /**
+     * Lógica para trazer todas as contas.
+     * @return retorna uma lista de clientDto
+     */
     public List<AccountDto> findAll(){
         List<Account> listAccount = accountRepository.findAll();
         List<AccountDto> listAccountDto = new ArrayList<>();
@@ -48,6 +55,11 @@ public class AccountService {
         return listAccountDto;
     }
 
+    /**
+     * Função que busca a conta por id.
+     * @param id - Id para buscar a conta
+     * @return retorna um objeto do tipo ContaDto
+     */
     public AccountDto findById(Integer id){
         Optional<Account> accountOptional = accountRepository.findById(id);
         if(accountOptional.isEmpty()){
@@ -75,6 +87,11 @@ public class AccountService {
         return accountDto; 
     }
 
+    /**
+     * Função com objeto de buscar a conta pelo o documento de identificação do cliente
+     * @param identificationDocument - recebe um documento de identificação do cliente
+     * @return retorna um objeto do tipo Account Dto
+     */
     public AccountDto findAllByIdentificationDocument(String identificationDocument){
         Account account = accountRepository.findByidentificationDocument(identificationDocument);
         if(account == null){
@@ -89,6 +106,10 @@ public class AccountService {
         return AccountFactory.convertAccountDto(account);
     }
 
+    /**
+     * Desabilita uma conta para não se utilizavel
+     * @param id - Recebe um id para desabilita a conta com esse id
+     */
     public void disableAccountById(Integer id){
         Optional<Account> accountOptional = accountRepository.findById(id);
         Account account = accountOptional.get();
@@ -102,6 +123,10 @@ public class AccountService {
         accountRepository.save(account);
     }
 
+    /**
+     * Função que reativa uma conta passando por id
+     * @param id - id da conta que precisa ser reativado
+     */
     public void reactivateAccountById(Integer id){
         Optional<Account> accountOptional = accountRepository.findById(id);
         Account account = accountOptional.get();
@@ -115,12 +140,21 @@ public class AccountService {
         accountRepository.save(account);
     }
 
+    /**
+     * Função que salva a conta no banco de dados
+     * @param accountForm - formulário com os campos que precisa 
+     * @return retorno da Conta Dto salva no banco de dados
+     */
     public AccountDto saveAccount(AccountForm accountForm){
         Account account = AccountFactory.convertAccountForm(accountForm);
         accountRepository.save(account);
         return AccountFactory.convertAccountDto(account);
     }
 
+    /**
+     * Remove uma conta pelo o ID
+     * @param id - Id da conta para ser excluída.
+     */
     public void removeById(Integer id){
         try
         {

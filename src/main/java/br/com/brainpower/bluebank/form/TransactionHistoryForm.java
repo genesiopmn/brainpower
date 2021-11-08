@@ -2,6 +2,9 @@ package br.com.brainpower.bluebank.form;
 
 import java.math.BigDecimal;
 
+/**
+ * Campos possíveis para cadastrar uma Tranferencia. Padrão Formulário.
+ */
 public class TransactionHistoryForm {
     
     private Integer idOriginAccount;

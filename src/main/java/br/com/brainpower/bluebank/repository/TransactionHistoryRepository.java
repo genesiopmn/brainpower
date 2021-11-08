@@ -6,6 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+/**
+ * Repository TransactionHistory.
+ */
 public interface TransactionHistoryRepository extends JpaRepository<TransactionHistory, Integer> {
     
     @Query("SELECT t FROM TransactionHistory t JOIN Account a ON t.origin.id = a.id WHERE a.accountNumber = :accountNumber")

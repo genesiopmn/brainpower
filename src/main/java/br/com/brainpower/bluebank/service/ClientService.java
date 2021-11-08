@@ -17,16 +17,28 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Classe com regras de negócios da entidade Cliente
+ */
 @Service
 public class ClientService {
     
     @Autowired
     private ClientRepository clientRepository;
-    
+
+    /**
+     * Função que trazem todos os clientes do banco de dados
+     * @return lista com todos os clientes
+     */
     public List<ClientDto> findAll(){
         return clientRepository.findAll().stream().map(ClientFactory::convertClientDto).collect(Collectors.toList());
     }
-    
+
+    /**
+     * Função que busca o cliente por id
+     * @param id id do cliente que precisa ser procurado
+     * @return retorna o cliente.
+     */
     public ClientDto findById(Integer id){
         Optional<Client> clientOptional = clientRepository.findById(id);
         if(clientOptional.isEmpty()){
@@ -38,7 +50,11 @@ public class ClientService {
         Client client = clientOptional.get();
         return ClientFactory.convertClientDto(client);
     }
-    
+
+    /**
+     * Remove um cliente por id
+     * @param id recebe um id do cliente
+     */
     public void removeById(Integer id){
         try{
             clientRepository.deleteById(id);    
@@ -50,13 +66,24 @@ public class ClientService {
             clientRepository.save(client);
         }        
     }
-    
+
+    /**
+     * salva um cliente no banco de dados
+     * @param clientForm recebe um formulário com o cliente
+     * @return retorna um cliente DTO
+     */
     public ClientDto save(ClientForm clientForm){
         Client client = ClientFactory.convertClient(clientForm);
         clientRepository.save(client);
         return ClientFactory.convertClientDto(client);
     }
-    
+
+    /**
+     * Função que atualiza o endereço de entrega
+     * @param updateClientFullAdressForm recebe um formulário para atualizar
+     * @param id recebe o id do cliente que precisa ser atualizado
+     * @return retorna um client DTO
+     */
     public ClientDto updateFullAdress(UpdateClientFullAdressForm updateClientFullAdressForm, Integer id){
         Optional<Client> clientOptional = clientRepository.findById(id);
         if(clientOptional.isEmpty()){

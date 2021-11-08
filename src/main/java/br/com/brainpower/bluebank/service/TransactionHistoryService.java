@@ -24,7 +24,11 @@ public class TransactionHistoryService {
     
     @Autowired
     private TransactionHistoryRepository transactionHistoryRepository;
-    
+
+    /**
+     * save uma transação no banco de dados
+     * @param transactionHistoryForm para salvar recebe um formulário de transação
+     */
     public void saveHistoryTransaction(TransactionHistoryForm transactionHistoryForm){
         Optional<Account> originAccountOptional = accountRepository.findById(transactionHistoryForm.getIdOriginAccount());
         Optional<Account> destinAccountOptional = accountRepository.findById(transactionHistoryForm.getIdDestinationAccount());
@@ -38,12 +42,22 @@ public class TransactionHistoryService {
             transactionHistoryRepository.save(transactionHistory);    
         }
     }
-    
+
+    /**
+     * Busca todas as transações por id dda conta
+     * @param accountNumber recebe o número da conta 
+     * @return retorno uma lista de transações
+     */
     public List<TransactionHistoryDto> findByIdAccount(String accountNumber){
         List<TransactionHistory> listTransactionHistory = transactionHistoryRepository.findByIdAccount(accountNumber);
         return listTransactionHistory.stream().map(TransactionHistoryFactory::convertTransactionHistoryDto).collect(Collectors.toList());
     }
-    
+
+    /**
+     * Função que busca todas as transações por número de identificação do cliente
+     * @param identificationDocument recebe o número de identificação do cliente
+     * @return retorna uma lista de transações
+     */
     public List<TransactionHistoryDto> findByIdClient(String identificationDocument){
         List<TransactionHistory> listTransactionHistory = transactionHistoryRepository.findByIdentificationDocument(identificationDocument);
         return listTransactionHistory.stream().map(TransactionHistoryFactory::convertTransactionHistoryDto).collect(Collectors.toList());

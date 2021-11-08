@@ -3,6 +3,9 @@ package br.com.brainpower.bluebank.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+/**
+ * Entidade Account (Mapeamento Objeto Relacional)
+ */
 @Entity
 @Table(name = "account")
 public class Account extends SuperEntity{

@@ -11,6 +11,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Entidade Client (Mapeamento Objeto Relacional)
+ */
 @Entity
 public class Client extends SuperEntity{
     
