@@ -70,3 +70,14 @@ ALTER TABLE TransactionHistory ADD CONSTRAINT FK_TransactionHistory_2
 ALTER TABLE TransactionHistory ADD CONSTRAINT FK_TransactionHistory_3
     FOREIGN KEY (destinationAccountId)
     REFERENCES Account (id);
+
+
+INSERT INTO `account` (`id`, `transHistId`, `createdAt`, `updatedAt`, `active`, `accountNumber`, `agencyNumber`, `agencyTelephone`, `accountStatus`, `accountBalance`, `clientId`) VALUES (NULL, NULL, '2021-11-07 19:26:20.000000', '2021-11-07 19:26:20.000000', '1', '243400', '143', '8133449999', '1', '2000', NULL), (NULL, NULL, '2021-11-07 19:26:20.000000', '2021-11-07 19:26:20.000000', '1', '442', '4243400', '1187748889', '1', '3000', NULL);
+
+INSERT INTO `client` (`id`, `createdAt`, `updatedAt`, `active`, `name`, `identificationDocument`, `email`, `telephone`, `birthdate`, `acceptStorageLgpd`) VALUES (NULL, '2021-11-07 19:35:38.000000', '2021-11-07 19:35:38.000000', '1', 'Fernanda Montenegro', '240129482913', 'fmon@hotmail.com', '11988777878', '11/01/1948', '1');
+
+INSERT INTO `client` (`id`, `createdAt`, `updatedAt`, `active`, `name`, `identificationDocument`, `email`, `telephone`, `birthdate`, `acceptStorageLgpd`) VALUES (NULL, '2021-11-07 19:35:38.000000', '2021-11-07 19:35:38.000000', '1', 'Tarcisio Meira', '111928931890', 'tmeira@hotmail.com', '11984427222', '11/01/1948', '1');
+
+INSERT INTO `fulladress` (`id`, `createdAt`, `updatedAt`, `active`, `address`, `number`, `complement`, `district`, `city`, `zipCode`, `state`, `country`, `addressId`) VALUES (NULL, '2021-11-07 19:41:08.000000', '2021-11-07 19:41:08.000000', '1', 'Av João Cabral de Melo Neto', '282', NULL, NULL, 'São Paulo', '1828304', 'São Paulo', 'Brasil', NULL), (NULL, '2021-11-07 19:41:08.000000', '2021-11-07 19:41:08.000000', '1', 'Rua Joaquim José da Silva Xavier', '293', NULL, NULL, 'Recife', '2930910', 'Pernambuco', 'Brasil', NULL);
+
+INSERT INTO `transactionhistory` (`id`, `createdAt`, `updatedAt`, `active`, `history`, `date`, `value`, `issuerAccountId`, `destinationAccountId`) VALUES (NULL, '2021-11-07 19:45:23.000000', '2021-11-07 19:45:23.000000', '1', 'h001', '2021-11-07 19:45:23.000000', '285928358234', '1', '1'), (NULL, '2021-11-07 19:45:23.000000', '2021-11-07 19:45:23.000000', '1', 'h002', '2021-11-07 19:45:23.000000', '1298912389018', '2', '2');

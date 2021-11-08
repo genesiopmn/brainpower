@@ -18,15 +18,15 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Crud Conta (feature/crud-account)
 - [x] Geração Script SQL
 - [x] Backlog do Projeto
-- [ ] Criar um tratamento centralizado e genérico da classe Exception na classe ExceptionHandler
-- [ ] Providenciar o tratamento de Exceção para a Exception Data Integration
-- [ ] Testar Desabilitados
-- [ ] Tratar verificação da conta centralizado
-- [ ] Alterar os tipos de dados em todos os lugares para BigDecimal
-- [ ] Criação do Diagrama Classes
-- [ ] Geração de Testes Automatizados
-- [ ] Relatório Account - Client - historyTransaction
-- [ ] Função Post (Cadastrar Conta)
+- [x] Criar um tratamento centralizado e genérico da classe Exception na classe ExceptionHandler
+- [x] Providenciar o tratamento de Exceção para a Exception Data Integration
+- [x] Testar Desabilitados
+- [x] Tratar verificação da conta centralizado
+- [x] Alterar os tipos de dados em todos os lugares para BigDecimal
+- [x] Criação do Diagrama Classes
+- [x] Geração de Testes Automatizados
+- [x] Relatório Account - Client - historyTransaction
+- [x] Função Post (Cadastrar Conta)
 - [ ] Reunião Entrega Final
 
 ## 💻 Pré-requisitos
@@ -98,8 +98,9 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
 ## Linguagens 
 
 * [MySQL](https://mysql.com/)
-* [Java](https://java.com)
-* [Spring boot](https://spring.io)
+    
+* [Java Spring boot](https://java.com)
+<!--- [Spring boot](https://spring.io) --->
 * [JQuery](https://jquery.com)
 
 ## 📝 Licença

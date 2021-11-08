@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import javax.servlet.http.HttpServletRequest;
 import java.time.Instant;
 
+/**
+ * Exceção para controlar todas as exceções emitidas na API
+ * Controle centralizado e resposta adquedas para o controller
+ */
 @ControllerAdvice
 public class ResourceExceptionHandler {
     

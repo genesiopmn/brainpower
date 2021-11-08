@@ -2,6 +2,9 @@ package br.com.brainpower.bluebank.dto;
 
 import java.math.BigDecimal;
 
+/**
+ * Classe Data Transfer Object (DTO) para a Conta
+ */
 public class AccountDto {
 
     private Integer id;

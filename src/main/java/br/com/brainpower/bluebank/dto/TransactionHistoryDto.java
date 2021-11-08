@@ -3,9 +3,12 @@ package br.com.brainpower.bluebank.dto;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * Classe Data Transfer Object (DTO) para a Transferencia Bancaria
+ */
 public class TransactionHistoryDto {
     
-    private LocalDateTime date;
+    private LocalDateTime date;                                  
     private String historic;
     private BigDecimal value;
 

@@ -6,6 +6,9 @@ import org.hibernate.annotations.NotFound;
 
 import java.math.BigDecimal;
 
+/**
+ * Campos possíveis para cadastrar uma conta. Padrão Formulário.
+ */
 public class AccountForm {
 
     @NotFound
