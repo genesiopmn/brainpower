@@ -31,10 +31,14 @@ public class AccountService {
     @Autowired
     private ClientRepository clientRepository;
 
+    @Autowired
+    private ClientService clientService;
+
     /**
      * Lógica para trazer todas as contas.
      * @return retorna uma lista de clientDto
      */
+
     public List<AccountDto> findAll(){
         List<Account> listAccount = accountRepository.findAll();
         List<AccountDto> listAccountDto = new ArrayList<>();
@@ -69,7 +73,7 @@ public class AccountService {
             throw new ResourceNotFoundException("id not found");
         }
         Account account = accountOptional.get();
-        Optional<Client> clientOptional = clientRepository.findById(account.getId());
+        Optional<Client> clientOptional = clientRepository.findById(account.getClient().getId());
         if(clientOptional.isEmpty()){
             throw new ResourceNotFoundException("id not found");
         }
@@ -146,7 +150,8 @@ public class AccountService {
      * @return retorno da Conta Dto salva no banco de dados
      */
     public AccountDto saveAccount(AccountForm accountForm){
-        Account account = AccountFactory.convertAccountForm(accountForm);
+        var client = getClientById(accountForm.getClient());
+        Account account = AccountFactory.convertAccountForm(accountForm, client);
         accountRepository.save(account);
         return AccountFactory.convertAccountDto(account);
     }
@@ -169,5 +174,20 @@ public class AccountService {
             AccountFactory.disableStatus(account);
             accountRepository.save(account);
         }
+    }
+
+    public Client getClientById(Integer id){
+
+        var client =  clientRepository.findById(id);
+
+        if(client.isEmpty()){
+            throw new ResourceNotFoundException("id not found");
+        }
+        if(!ClientFactory.checkStatus(client.get())){
+            throw new ResourceNotFoundException("client is not active");
+        }
+
+        return client.get();
+
     }
 }

@@ -5,17 +5,11 @@ import br.com.brainpower.bluebank.dto.ClientDto;
 import br.com.brainpower.bluebank.entity.Account;
 import br.com.brainpower.bluebank.entity.Client;
 import br.com.brainpower.bluebank.form.AccountForm;
-import br.com.brainpower.bluebank.service.ClientService;
-import br.com.brainpower.bluebank.service.exceptions.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Classe para fazer conversão de entidade para DTO e de DTO para entidade
  */
 public class AccountFactory {
-    
-    @Autowired
-    private ClientService clientService;
 
     /**
      * Função para convert entidadde Account para DTO AccountDto
@@ -30,14 +24,13 @@ public class AccountFactory {
         accountDto.setAgencyTelephone(account.getAgencyTelephone());
         accountDto.setAccountBalance(account.getAccountBalance());
         accountDto.setId(account.getId());
-        accountDto.setAccountStatus(true);       
+        accountDto.setAccountStatus(true);
         
-        Client client = account.getClient();      
-        
-        ClientDto clientDto = ClientFactory.convertClientDto(client);
+        ClientDto clientDto = ClientFactory.convertClientDto(account.getClient());
         accountDto.setClient(clientDto);
         return accountDto;
     }
+
 
     /**
      * Função para converter de um objeto do tipo Form para Entidade
@@ -45,10 +38,13 @@ public class AccountFactory {
      * @return retorno de um Account Entidade
      */
     public static Account convertAccountForm(AccountForm accountForm){
+
         Account account = new Account();
         account.setAccountNumber(accountForm.getAccountNumber());
         account.setAgencyNumber(accountForm.getAgencyNumber());
         account.setAgencyTelephone(accountForm.getAgencyTelephone());
+        account.setAccountBalance(accountForm.getAccountBalance());
+        account.setClient(client);
 
         return account;
     }

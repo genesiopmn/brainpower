@@ -1,6 +1,7 @@
 package br.com.brainpower.bluebank.form;
 
 import br.com.brainpower.bluebank.entity.Client;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.NotFound;
 
 import java.math.BigDecimal;
@@ -19,11 +20,11 @@ public class AccountForm {
     @NotFound
     private BigDecimal accountBalance;
     @NotFound
-    private Client client;
+    private Integer client;
 
 
     public AccountForm(String accountNumber, String agencyNumber, String agencyTelephone, BigDecimal accountBalance,
-                           Client client) {
+                       Integer client) {
         this.accountNumber = accountNumber;
         this.agencyNumber = agencyNumber;
         this.agencyTelephone = agencyTelephone;
@@ -47,7 +48,7 @@ public class AccountForm {
         return accountBalance;
     }
 
-    public Client getClient() {
+    public Integer getClient() {
         return client;
     }
 }
