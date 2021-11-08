@@ -75,7 +75,11 @@ public class Account extends SuperEntity{
     public void setAccountStatus(boolean accountStatus) {
         this.accountStatus = accountStatus;
     }
-    
+
+    public void setAccountBalance(BigDecimal accountBalance) {
+        this.accountBalance = accountBalance;
+    }
+
     public void addAccountBalance(BigDecimal value){
         this.accountBalance = this.accountBalance.add(value);
     }

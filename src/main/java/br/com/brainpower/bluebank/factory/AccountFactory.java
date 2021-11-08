@@ -5,14 +5,8 @@ import br.com.brainpower.bluebank.dto.ClientDto;
 import br.com.brainpower.bluebank.entity.Account;
 import br.com.brainpower.bluebank.entity.Client;
 import br.com.brainpower.bluebank.form.AccountForm;
-import br.com.brainpower.bluebank.service.ClientService;
-import br.com.brainpower.bluebank.service.exceptions.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class AccountFactory {
-    
-    @Autowired
-    private ClientService clientService;
 
     public static AccountDto convertAccountDto(Account account){
         AccountDto accountDto = new AccountDto();
@@ -22,20 +16,20 @@ public class AccountFactory {
         accountDto.setAgencyTelephone(account.getAgencyTelephone());
         accountDto.setAccountBalance(account.getAccountBalance());
         accountDto.setId(account.getId());
-        accountDto.setAccountStatus(true);       
+        accountDto.setAccountStatus(true);
         
-        Client client = account.getClient();      
-        
-        ClientDto clientDto = ClientFactory.convertClientDto(client);
+        ClientDto clientDto = ClientFactory.convertClientDto(account.getClient());
         accountDto.setClient(clientDto);
         return accountDto;
     }
 
-    public static Account convertAccountForm(AccountForm accountForm){
+    public static Account convertAccountForm(AccountForm accountForm, Client client){
         Account account = new Account();
         account.setAccountNumber(accountForm.getAccountNumber());
         account.setAgencyNumber(accountForm.getAgencyNumber());
         account.setAgencyTelephone(accountForm.getAgencyTelephone());
+        account.setAccountBalance(accountForm.getAccountBalance());
+        account.setClient(client);
 
         return account;
     }

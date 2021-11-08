@@ -41,7 +41,7 @@ public class ClientController {
     @PostMapping
     public ResponseEntity<ClientDto> saveClient(@RequestBody ClientForm form, UriComponentsBuilder uriBuilder){
         ClientDto clientDto = clientService.save(form);
-        URI uri = uriBuilder.path("/cars/{id}").buildAndExpand(clientDto.getId()).toUri();
+        URI uri = uriBuilder.path("/clients/{id}").buildAndExpand(clientDto.getId()).toUri();
         return ResponseEntity.created(uri).body(clientDto);
     }
     

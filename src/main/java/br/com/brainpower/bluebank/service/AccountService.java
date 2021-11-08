@@ -28,6 +28,9 @@ public class AccountService {
     @Autowired
     private ClientRepository clientRepository;
 
+    @Autowired
+    private ClientService clientService;
+
     public List<AccountDto> findAll(){
         List<Account> listAccount = accountRepository.findAll();
         List<AccountDto> listAccountDto = new ArrayList<>();
@@ -116,7 +119,8 @@ public class AccountService {
     }
 
     public AccountDto saveAccount(AccountForm accountForm){
-        Account account = AccountFactory.convertAccountForm(accountForm);
+        var client = getClientById(accountForm.getClient());
+        Account account = AccountFactory.convertAccountForm(accountForm, client);
         accountRepository.save(account);
         return AccountFactory.convertAccountDto(account);
     }
@@ -135,5 +139,20 @@ public class AccountService {
             AccountFactory.disableStatus(account);
             accountRepository.save(account);
         }
+    }
+
+    public Client getClientById(Integer id){
+
+        var client =  clientRepository.findById(id);
+
+        if(client.isEmpty()){
+            throw new ResourceNotFoundException("id not found");
+        }
+        if(!ClientFactory.checkStatus(client.get())){
+            throw new ResourceNotFoundException("client is not active");
+        }
+
+        return client.get();
+
     }
 }

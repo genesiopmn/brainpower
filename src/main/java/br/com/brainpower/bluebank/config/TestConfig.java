@@ -58,10 +58,6 @@ public class TestConfig implements CommandLineRunner {
         
         account5.setActive(false);
         account1.setAccountStatus(false);
-        
-        
-        
-        
 
         TransactionHistory transactionHistory = new TransactionHistory("TESTE PRIMEIRA TRANSFERENCIA",new BigDecimal("5001"),account1,account2);
         clientRepository.save(client1);
