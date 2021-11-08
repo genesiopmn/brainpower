@@ -2,15 +2,19 @@ package br.com.brainpower.bluebank.service;
 
 import br.com.brainpower.bluebank.dto.ClientDto;
 import br.com.brainpower.bluebank.entity.Client;
+import br.com.brainpower.bluebank.entity.FullAddress;
 import br.com.brainpower.bluebank.factory.ClientFactory;
 import br.com.brainpower.bluebank.form.ClientForm;
+import br.com.brainpower.bluebank.form.UpdateClientFullAddressForm;
 import br.com.brainpower.bluebank.repository.ClientRepository;
+import br.com.brainpower.bluebank.repository.FullAddressRepository;
 import br.com.brainpower.bluebank.service.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -28,7 +32,8 @@ public class ClientService {
     @Autowired
     private FullAddressService fullAddressService;
     
-
+    @Autowired
+    private FullAddressRepository fullAddressRepository; 
 
     /**
      * Função que trazem todos os clientes do banco de dados
@@ -91,16 +96,16 @@ public class ClientService {
      * @param id recebe o id do cliente que precisa ser atualizado
      * @return retorna um client DTO
      */
-    public ClientDto updateFullAdress(UpdateClientFullAdressForm updateClientFullAdressForm, Integer id){
+    public ClientDto updateFullAdress(UpdateClientFullAddressForm updateClientFullAdressForm, Integer id){
         Optional<Client> clientOptional = clientRepository.findById(id);
         if(clientOptional.isEmpty()){
             throw new ResourceNotFoundException(id);
         }
         Client client = clientOptional.get();
-        Client clientUpdate = ClientFactory.updateFullAdress(client, updateClientFullAdressForm);
-        clientUpdate.setUpdatedAt(LocalDateTime.now());
-        clientRepository.save(clientUpdate);                                                                  
-        return ClientFactory.convertClientDto(clientUpdate);
+        FullAddress fullAddress = ClientFactory.updateFullAdress(client.getListFullAddress().get(0), updateClientFullAdressForm);
+        fullAddress.setUpdatedAt(LocalDateTime.now());
+        fullAddressRepository.save(fullAddress);                                                                  
+        return ClientFactory.convertClientDto(client);
     }
 
 }

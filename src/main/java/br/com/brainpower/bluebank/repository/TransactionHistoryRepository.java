@@ -14,6 +14,6 @@ public interface TransactionHistoryRepository extends JpaRepository<TransactionH
     @Query("SELECT t FROM TransactionHistory t JOIN Account a ON t.origin.id = a.id WHERE a.accountNumber = :accountNumber")
     List<TransactionHistory> findByIdAccount(String accountNumber);
     
-    @Query("SELECT t FROM TransactionHistory t JOIN Account a on t.origin.id = a.id JOIN Client c ON a.client = c.id")
+    @Query("SELECT t FROM TransactionHistory t JOIN Account a ON t.origin.id = a.id JOIN Client c ON a.client = c.id WHERE c.identificationDocument = :identificationDocument")
     List<TransactionHistory> findByIdentificationDocument(String identificationDocument);
 }

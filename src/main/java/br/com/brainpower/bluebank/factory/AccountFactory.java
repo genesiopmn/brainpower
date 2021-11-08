@@ -37,7 +37,7 @@ public class AccountFactory {
      * @param accountForm - Objeto do tipo AccountForm
      * @return retorno de um Account Entidade
      */
-    public static Account convertAccountForm(AccountForm accountForm){
+    public static Account convertAccountForm(AccountForm accountForm, Client client){
 
         Account account = new Account();
         account.setAccountNumber(accountForm.getAccountNumber());
@@ -45,7 +45,7 @@ public class AccountFactory {
         account.setAgencyTelephone(accountForm.getAgencyTelephone());
         account.setAccountBalance(accountForm.getAccountBalance());
         account.setClient(client);
-
+        
         return account;
     }
 
