@@ -46,7 +46,76 @@ Windows:
 Para usar <brainpower>, siga estas etapas:
 <git clone https://github.com/genesiopmn/brainpower.git>
 ```
-
+## 🚀 Endpoints
+  
+Na nossa aplicação são 15 endopoints para a utilização.
+  
+  <b>Account</b>
+  - Metódo Get: http://localhost:8080/account -> Traz todas as contas cadastrados na aplicação;
+  - Método Get: http://localhost:8080/account/2 -> Traz uma conta com id passado como parametro;
+  - Método Get: http://localhost:8080/account/identificationDocument/1234567898 -> Traz todas as contas cadastrados com um número de identificação;
+  - Método Delete: http://localhost:8080/account/1 -> Deleta a conta com id um;
+  - Método Post: http://localhost:8080/account/ -> Cadastra uma nova conta;
+Dados para cadastro: 
+  {
+    "accountNumber":"123456",
+    "agencyNumber":"79",
+    "agencyTelephone":"11993527709",
+    "accountBalance":"500",
+    "client":"1"
+ }
+  - Método Put: http://localhost:8080/account/disabled/2 -> Desativa a conta com id 2;
+  - Método Put: http://localhost:8080/account/reactive/2 -> Reativa a conta com id 2;
+  
+  <b>Client</b>
+  - Método Get: http://localhost:8080/client -> Traz todos os clientes cadastrados na base de dados;
+  - Método Get: http://localhost:8080/client/1 -> Traz o cliente com id 1;
+  - Método Delete: http://localhost:8080/client/1 -> Deleta o cliente com id um;
+  - Método Post: http://localhost:8080/account/ -> Cadastra um novo cliente;
+  Dados para o cadastro:
+  {
+    "name":"123456",
+    "identificationDocument":"79",
+    "email":"11993527709",
+    "telephone":"500",
+    "listFulladdress" : [
+            {
+                "id": 1,
+                "address": "Rua Caetano Basso",
+                "number": 252,
+                "complement": "",
+                "district": "SP",
+                "city": "São Paulo",
+                "zipCode": "03584-130",
+                "state": "São Paulo",
+                "country": "Brasil"
+            }
+        ]
+  }
+  - Método Put: http://localhost:8080/client/1 -> Atualiza o endereço com id 1; 
+  {
+    "address": "Rua Barbosa",
+    "number": 252,
+    "complement": "",
+    "district": "SP",
+    "city": "São Paulo",
+    "zipCode": "03584-130",
+    "state": "São Paulo",
+    "country": "Brasil"
+  }
+  
+  <b>TransactionHistory</b>
+  
+  - Método Post: http://localhost:8080/transaction -> Transfere valor entre contas
+  {
+    "idOriginAccount": "2",
+    "idDestinationAccount": "4",
+    "value": "1",
+    "historic": "TESTE"
+  }
+  - Método Get: http://localhost:8080/transaction/account/14831-0 -> Busca todas as transferencias da conta 14831-0;
+  - Método Get: http://localhost:8080/transaction/client/1234567899 - > Busca todas as transferencias do cliente com o número de identificação 1234567899 
+    
 
 <!--- Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Fornece uma referência de opções para pontos de bônus! --->
 
