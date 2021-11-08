@@ -6,7 +6,6 @@ import br.com.brainpower.bluebank.entity.TransactionHistory;
 import br.com.brainpower.bluebank.repository.AccountRepository;
 import br.com.brainpower.bluebank.repository.ClientRepository;
 import br.com.brainpower.bluebank.repository.TransactionHistoryRepository;
-import br.com.brainpower.bluebank.service.TransactionHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
